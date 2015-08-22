@@ -43,8 +43,6 @@ zj@zheng-ji:$ ./httpDns --help
 Usage of ./httpDns:
   -c="../etc/conf.yml": conf file，default is ../etc/conf.yml
 
----
-
 ./httpDns -c="your_conf_yaml_path"
 ```
 
