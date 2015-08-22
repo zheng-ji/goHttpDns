@@ -1,6 +1,7 @@
 ## goHttpDns
 
-A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolve answer.
+A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolve answer
+
 一个用 Go 写的 HttpDns 服务, 为了抵抗Dns劫持污染，并带有缓存功能 。
 
 ### How To Compile
