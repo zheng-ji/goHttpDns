@@ -7,6 +7,7 @@ A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolv
 ### How To Compile
 
 ```
+cd $GOPATH;
 git clone http://github.com/zheng-ji/goHttpDns;
 cd src;
 make // httpDns will Generate in bin directory
@@ -61,6 +62,18 @@ Resp:
     "msg":""
 }
 ```
+
+### Dependece Third Part Lib
+
+Thanks to:
+
+* [launchpad/goyaml](https://launchpad.net/goyaml)
+* [cihub/seelog](github.com/cihub/seelog)
+* [miekg/dns](github.com/miekg/dns)
+* [redisgo/redis](github.com/garyburd/redigo/redis")
+* [hoisie/web](github.com/hoisie/web)
+
+You need to go get the list above
 
 ----
 
