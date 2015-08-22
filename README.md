@@ -1,17 +1,14 @@
-### goHttpDns
-
-#### Description
+## goHttpDns
 
 A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolve answer.
 一个用 Go 写的 HttpDns 服务, 为了抵抗Dns劫持污染，并带有缓存功能 。
 
-### Compile and Deploy
+### How To Compile
 
 ```
 git clone http://github.com/zheng-ji/goHttpDns;
 cd src;
 make // httpDns will Generate in bin directory
-
 ```
 
 ### How To Configure
@@ -45,14 +42,20 @@ zj@zheng-ji:$ ./httpDns --help
 Usage of ./httpDns:
   -c="../etc/conf.yml": conf file，default is ../etc/conf.yml
 
+---
+
 ./httpDns -c="your_conf_yaml_path"
 ```
+
 You can also use `supervisor` to start your sever
 
 ### How To Use
 
 ```
 $ curl http://127.0.0.1:9999/d?url=http://zheng-ji.info
+
+Resp:
+
 {
     "c":0,
     "targetip":"http://106.185.48.24",
