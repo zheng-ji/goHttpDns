@@ -10,7 +10,7 @@ A HttpDns Server Written by Go, In order to avoid Dns hijacking and cache resolv
 cd $GOPATH;
 git clone http://github.com/zheng-ji/goHttpDns;
 cd src;
-make // httpDns will Generate in bin directory
+make
 ```
 
 ### How To Configure
@@ -38,6 +38,8 @@ dnsservers:
 ```
 
 ### How To Run
+
+after make, the binary executable file will generate in `bin` directory
 
 ```
 zj@zheng-ji:$ ./httpDns --help
@@ -73,7 +75,7 @@ Thanks to:
 * [redisgo/redis](github.com/garyburd/redigo/redis")
 * [hoisie/web](github.com/hoisie/web)
 
-You need to go get the list above
+You need to `go get` the list above
 
 ----
 
