@@ -1,0 +1,18 @@
+<seelog minlevel="debug">
+    <outputs>
+        <filter levels="debug">
+            <rollingfile formatid="sended" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+        </filter>
+        <filter levels="info">
+            <rollingfile formatid="info" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+        </filter>
+        <filter levels="warn,error,critical">
+            <rollingfile formatid="error" type="date" filename="../log/httpDns" archivetype="zip" datepattern="2006-01-02" />
+        </filter>
+    </outputs>
+    <formats>
+        <format id="sended" format="%Time %Date [%Level] %Msg%n"/>
+        <format id="info" format="%Time %Date [%Level] %Msg%n"/>
+        <format id="error" format="%Time %Date [%Level] %Func %Msg%n"/>
+    </formats>
+</seelog>

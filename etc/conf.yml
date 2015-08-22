@@ -1,0 +1,18 @@
+# redis 连接配置
+redis:
+  host: 127.0.0.1:6379
+  db: 0
+
+# 日志(出错信息，调试信息)配置路径
+log_config: ../etc/logger.xml
+
+# 监听的IP,监听的端口, cache TTL
+listen: 0.0.0.0
+port: 9999
+ttl: 100
+
+dnsservers:
+    - 202.96.128.86
+    - 202.96.128.166
+    - 8.8.8.8
+    - 8.8.4.4
