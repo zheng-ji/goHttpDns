@@ -27,7 +27,6 @@ func Initializer(conf string) bool {
 
 	//seelog 配置
 	logger, err := seelog.LoggerFromConfigAsFile(appConfig.Logconf)
-	fmt.Println("%+v", appConfig)
 	if nil != err {
 		fmt.Println("%v\n", err)
 		return false
