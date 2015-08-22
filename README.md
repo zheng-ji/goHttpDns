@@ -39,7 +39,7 @@ dnsservers:
 
 ### How To Run
 
-after make, the binary executable file will generate in `bin` directory
+After `make`, a binary executable file call `httpDns` will be generated under the `bin` directory
 
 ```
 zj@zheng-ji:$ ./httpDns --help
