@@ -20,6 +20,7 @@ type Resp struct {
 const (
 	SUCC   = 0
 	FAILED = -1
+	HTTP   = "http://"
 )
 
 //Ping
@@ -32,6 +33,16 @@ func PingHandler(ctx *web.Context) string {
 func ResolveHandler(ctx *web.Context) string {
 
 	url := ctx.Params["url"]
+	targetIp_str, host_str, err := getResultFromCache(url)
+	if err == nil {
+		resp := Resp{
+			Code:     SUCC,
+			TargetIp: targetIp_str,
+			Host:     host_str,
+		}
+		return resp.jsonString()
+	}
+
 	targetIp, host, err := DnsDecoder(url)
 	if nil != err {
 		resp := Resp{
@@ -46,9 +57,8 @@ func ResolveHandler(ctx *web.Context) string {
 			TargetIp: *targetIp,
 			Host:     *host,
 		}
-		cacheResp(*host, *targetIp)
+		cacheResp(url, *host, *targetIp)
 		seelog.Infof("[ResolveHandler] host:%s targetIp:%s", *host, *targetIp)
-		fmt.Println("%s %s ", *targetIp, *host)
 		return resp.jsonString()
 	}
 }
