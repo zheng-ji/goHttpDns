@@ -77,8 +77,8 @@ Thanks to:
 
 You need to `go get` the list above
 
-----
 
-MIT LICENSE 
+License
+-------
 
-Author [zheng-ji](http://zheng-ji.info)
+Copyright (c) 2015 by [zheng-ji](zheng-ji.info) released under a MIT style license.
