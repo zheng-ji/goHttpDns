@@ -42,7 +42,7 @@ dnsservers:
 After `make`, a binary executable file called `httpDns` will be generated under the `bin` directory
 
 ```
-zj@zheng-ji:$ ./httpDns --help
+$ ./httpDns --help
 Usage of ./httpDns:
   -c="../etc/conf.yml": conf file，default is ../etc/conf.yml
 
@@ -65,7 +65,7 @@ Resp:
 }
 ```
 
-### Dependece Third Part Lib
+### Dependence Third Part Lib
 
 Thanks to:
 
