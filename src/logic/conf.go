@@ -10,15 +10,17 @@ import (
 	"launchpad.net/goyaml"
 )
 
+// AppConfig Type
 type AppConfig struct {
 	Redis      RedisConf `yaml:"redis"`
 	Logconf    string    `yaml:"log_config"`
 	Listen     string    `yaml:"listen"`
 	Port       string    `yaml:"port"`
-	Ttl        int       `yaml:"ttl"`
+	TTL        int       `yaml:"ttl"`
 	Dnsservers []string  `yaml:"dnsservers"`
 }
 
+// RedisConf Type
 type RedisConf struct {
 	Host string `yaml:"host"`
 	Db   string `yaml:"db"`
@@ -41,8 +43,8 @@ func parseConfigFile(filepath string) error {
 		if err = goyaml.Unmarshal(config, &appConfig); err != nil {
 			return err
 		}
-		if appConfig.Ttl == 0 {
-			appConfig.Ttl = 10 * 60
+		if appConfig.TTL == 0 {
+			appConfig.TTL = 10 * 60
 		}
 		if !appConfig.isValid() {
 			return errors.New("Invalid configuration")

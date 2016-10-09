@@ -12,6 +12,7 @@ import (
 	"net/url"
 )
 
+// DnsDecoder resolve url's dns
 func DnsDecoder(urlStr string) (*string, *string, error) {
 	u, err := url.Parse(urlStr)
 	if err != nil {
@@ -24,9 +25,10 @@ func DnsDecoder(urlStr string) (*string, *string, error) {
 		urlStr = u.String()
 		return &urlStr, &hostTmp, nil
 	}
-	return nil, nil, fmt.Errorf("dnsDecoder fail!")
+	return nil, nil, fmt.Errorf("dnsDecoder fail")
 }
 
+// Dns get DNS record
 func Dns(host string) *net.IP {
 	for _, dnsServer := range appConfig.Dnsservers {
 		IP := dnss(host, dnsServer+":53")
@@ -71,6 +73,7 @@ func dnss(host, dnsServer string) *net.IP {
 	return nil
 }
 
+// Lookup search recordy by dns server
 func Lookup(ctype, host, dnsServer string) (*dns.Msg, error) {
 
 	itype, ok := dns.StringToType[ctype]
@@ -109,7 +112,7 @@ func lookup(msg *dns.Msg, client *dns.Client, server string, edns bool) (*dns.Ms
 	}
 
 	if msg.Id != response.Id {
-		return nil, fmt.Errorf("DNS ID mismatch, request: %d, response: %d!", msg.Id, response.Id)
+		return nil, fmt.Errorf("DNS ID mismatch, request: %d, response: %d", msg.Id, response.Id)
 	}
 
 	if response.MsgHdr.Truncated {

@@ -16,6 +16,7 @@ var (
 	redisPool *redis.Pool
 )
 
+// Initializer Func
 func Initializer(conf string) bool {
 
 	err := parseConfigFile(conf)
@@ -38,6 +39,7 @@ func Initializer(conf string) bool {
 	return true
 }
 
+// Loop Func Register web interface
 func Loop() {
 
 	// 注册web接口

@@ -21,7 +21,7 @@ func (resp *Resp) jsonString() string {
 	return string(b)
 }
 
-func cacheResp(url, host, targetIp string) {
+func cacheResp(url, host, targetIP string) {
 	var err error
 	conn := redisPool.Get()
 	if conn == nil {
@@ -32,19 +32,19 @@ func cacheResp(url, host, targetIp string) {
 	var key string
 
 	key = fmt.Sprintf("%s_host", url)
-	_, err = conn.Do("SETEX", key, appConfig.Ttl, host)
+	_, err = conn.Do("SETEX", key, appConfig.TTL, host)
 	if err != nil {
 		seelog.Errorf("[Redis][SETEX] error: %v", err)
 	}
 
 	key = fmt.Sprintf("%s_ip", url)
-	_, err = conn.Do("SETEX", key, appConfig.Ttl, targetIp)
+	_, err = conn.Do("SETEX", key, appConfig.TTL, targetIP)
 	if err != nil {
 		seelog.Errorf("[Redis][SETEX] error: %v", err)
 	}
 }
 
-func getResultFromCache(url string) (targetIp string, host string, err error) {
+func getResultFromCache(url string) (targetIP string, host string, err error) {
 	conn := redisPool.Get()
 	if conn == nil {
 		return
@@ -56,7 +56,7 @@ func getResultFromCache(url string) (targetIp string, host string, err error) {
 	key = fmt.Sprintf("%s_host", url)
 	host, err = redis.String(conn.Do("GET", key))
 	key = fmt.Sprintf("%s_ip", url)
-	targetIp, err = redis.String(conn.Do("GET", key))
+	targetIP, err = redis.String(conn.Do("GET", key))
 
 	if err != nil {
 		seelog.Errorf("[Redis][GET] error: %v", err)

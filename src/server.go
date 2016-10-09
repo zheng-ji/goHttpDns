@@ -4,7 +4,7 @@ package main
 
 import (
 	"flag"
-	"httpDns/src/logic"
+	"goHttpDns/src/logic"
 )
 
 var (

@@ -10,9 +10,10 @@ import (
 	"github.com/hoisie/web"
 )
 
+// Resp Type
 type Resp struct {
 	Code     int    `json:"c"`
-	TargetIp string `json:"targetip,omitempty"`
+	TargetIP string `json:"targetip,omitempty"`
 	Host     string `json:"host, omitempty"`
 	Msg      string `json:"msg, omitempty"`
 }
@@ -23,27 +24,27 @@ const (
 	HTTP   = "http://"
 )
 
-//Ping
+// PingHandler Func
 func PingHandler(ctx *web.Context) string {
 	ret := "ok"
 	return ret
 }
 
-// 查询 DNS 真实IP
+// ResolveHandler Func
 func ResolveHandler(ctx *web.Context) string {
 
 	url := ctx.Params["url"]
-	targetIp_str, host_str, err := getResultFromCache(url)
+	targetIPstr, hostStr, err := getResultFromCache(url)
 	if err == nil {
 		resp := Resp{
 			Code:     SUCC,
-			TargetIp: targetIp_str,
-			Host:     host_str,
+			TargetIP: targetIPstr,
+			Host:     hostStr,
 		}
 		return resp.jsonString()
 	}
 
-	targetIp, host, err := DnsDecoder(url)
+	targetIP, host, err := DnsDecoder(url)
 	if nil != err {
 		resp := Resp{
 			Code: FAILED,
@@ -54,11 +55,11 @@ func ResolveHandler(ctx *web.Context) string {
 	} else {
 		resp := Resp{
 			Code:     SUCC,
-			TargetIp: *targetIp,
+			TargetIP: *targetIP,
 			Host:     *host,
 		}
-		cacheResp(url, *host, *targetIp)
-		seelog.Infof("[ResolveHandler] host:%s targetIp:%s", *host, *targetIp)
+		cacheResp(url, *host, *targetIP)
+		seelog.Infof("[ResolveHandler] host:%s targetIp:%s", *host, *targetIP)
 		return resp.jsonString()
 	}
 }
