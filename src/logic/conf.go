@@ -6,8 +6,8 @@ package logic
 
 import (
 	"errors"
+	goyaml "gopkg.in/yaml.v3"
 	"io/ioutil"
-	"launchpad.net/goyaml"
 )
 
 // AppConfig Type
